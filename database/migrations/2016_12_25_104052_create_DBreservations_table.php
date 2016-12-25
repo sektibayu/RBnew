@@ -15,7 +15,7 @@ class CreateDBreservationsTable extends Migration
     {
         Schema::create('reservation', function (Blueprint $table) {
             $table->increments('reservation_id');
-            $table->integer('nrp_nip');
+            $table->string('nrp_nip');
             $table->integer('room_id');
             $table->timestamp('start_time')->nullable();
             $table->timestamp('end_time')->nullable();

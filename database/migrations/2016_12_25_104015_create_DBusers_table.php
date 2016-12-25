@@ -14,7 +14,7 @@ class CreateDBusersTable extends Migration
     public function up()
     {
         Schema::create('user', function (Blueprint $table) {
-            $table->increments('nrp_nip');
+            $table->string('nrp_nip');
             $table->string('name');
         });
     }
