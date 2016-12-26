@@ -90,12 +90,6 @@
 					<div class="panel-body">
 						<div class="col-md-12">
 							<form role="form" method="post" action="{{URL::to('reservasi')}}">
-								<div class="alert alert-success js-alert hidden" role="alert">
-        							Proses reservasi berhasil!
-  								</div>
-  								<div class="alert alert-danger js-alert hidden" role="alert">
-        							User tidak terdaftar!
-  								</div>
 								<div class="form-group">
 									<label for="nrp_nip">NRP/NIP</label>
 									<input type="text" name="nrp_nip" class="form-control">
@@ -136,6 +130,12 @@
 									<label for="purpose">Tujuan Peminjaman</label>
 									<input type="text" name="purpose" class="form-control">
 								</div>
+								<div class="alert alert-success js-alert hidden" role="alert">
+        							Proses reservasi berhasil!
+  								</div>
+  								<div class="alert alert-danger js-alert hidden" role="alert">
+        							User tidak terdaftar!
+  								</div>
 								{{csrf_field()}}
 								<button type="submit" class="btn btn-primary">Pesan</button>
 								<button type="reset" class="btn btn-default">Reset</button>
