@@ -28,7 +28,7 @@
 				<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User</a> -->
 				<ul class="user-menu">
 					<li>
-						<a href="admin/logout" class="dropdown-toggle" data-toggle="dropdown"> Logout</a>
+						<a href="{{ URL::to('admin/logout') }}"> Logout</a>
 					</li>
 				</ul>
 				<ul class="user-menu">
