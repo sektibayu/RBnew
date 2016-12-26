@@ -23,18 +23,17 @@ Route::post('masuk', array(
 		'uses' => 'AdminController@login', 
 		'as' => 'login'
 ));
-
+	
+	Route::get('admin/jadwal', 'AdminController@index');
+	Route::get('admin/reservasi', 'AdminController@index');
+	Route::get('admin', function () {
+	    return view('pages.admin.index');
+	});
+	Route::get('admin/user', 'UserController@index');
+	Route::get('admin/logout','AdminController@logout');
 
 Route::group(['middleware' => ['auth']], function () {
 	
-	Route::get('admin', function () {
-	    return view('pages.admin');
-	});
-
-	Route::get('admin/logout','AdminController@logout');
-
-	Route::get('form', function () {
-	    return view('pages.form');
-	});
+	
 
 });

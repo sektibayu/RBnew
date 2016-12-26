@@ -1,48 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lumino - Dashboard</title>
+	@extends('pages.admin.layout')
 
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/datepicker3.css" rel="stylesheet">
-<link href="css/styles.css" rel="stylesheet">
-
-<!--Icons-->
-<script src="js/lumino.glyphs.js"></script>
-
-<!--[if lt IE 9]>
-<script src="js/html5shiv.js"></script>
-<script src="js/respond.min.js"></script>
-<![endif]-->
-
-</head>
-
-<body>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#"><span>Room</span>Booking</a>
-				<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User</a> -->
-				<ul class="user-menu">
-					<li>
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Logout</a>
-					</li>
-				</ul>
-				<ul class="user-menu">
-					<li>
-						<a href="{{ URL::to('reservasi') }}"> Reservasi</a>
-					</li>
-				</ul>
-				<ul class="user-menu">
-					<li>
-						<a href="{{ URL::to('') }}"> Jadwal Pinjam</a>
-					</li>
-				</ul>
-			</div>			
-		</div><!-- /.container-fluid -->
-	</nav>
+	@section('title','Reservasi')
+	
+	@section('content')
 	<div id="sidebar-collapse" class="col-sm-3 sidebar">
 		<div class="panel panel-primary">
 						<div class="panel-heading text-center">Pending Request</div>
@@ -135,9 +95,9 @@
 			</div><!-- /.col-->
 		</div><!-- /.row -->
 	</div>
-	<script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
+	@endsection
+
+	@section('js-extend')
 	<script type="text/javascript">
 		$('form').on('submit', function( event ) {
 	  	var $form = $( this );
@@ -165,21 +125,4 @@
 	  	});
 	});
 	</script>
-	<!-- <script>
-		!function ($) {
-			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
-				$(this).find('em:first').toggleClass("glyphicon-minus");	  
-			}); 
-			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-		}(window.jQuery);
-
-		$(window).on('resize', function () {
-		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-		})
-		$(window).on('resize', function () {
-		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script> -->
-</body>
-
-</html>
+	@endsection
