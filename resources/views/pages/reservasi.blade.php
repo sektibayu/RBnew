@@ -99,10 +99,6 @@
 								<div class="form-group">
 									<label for="nrp_nip">NRP/NIP</label>
 									<input type="text" name="nrp_nip" class="form-control">
-								</div>						
-								<div class="form-group">
-									<label for="name">Nama</label>
-									<input type="text" name="name" class="form-control">
 								</div>
 								<div class="form-group">
 									<label for="room_id">Ruangan</label>
