@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
-});
+Route::get('/', 'ScheduleController@index');
 
 Route::get('reservasi','ReservationController@DisplayPendingRequest');
 route::post('reservasi','ReservationController@ReservationInput');

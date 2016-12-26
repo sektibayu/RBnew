@@ -93,13 +93,36 @@
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/timetable.min.js"></script>
-	<script>
+	<!--script src="js/timetable.min.js"></script-->
+	<script src="js/timetable.min.js">
 		$(function () {
 			var timetable = new Timetable();
+			var scheduleString = {!! json_encode($schedule->toArray()) !!};
+			console.log(scheduleString);
+			//var scheduleString = console.log(schedule);
+			var stringLength = scheduleString.length;
+			var locations = ['Ruang 101', 'Ruang 102', 'Ruang 103', 'Ruang 104','Ruang 105A','Ruang 105B','Ruang 106','Ruang 108','Aula','Studio Musik'];
 			timetable.setScope(6, 23); // optional, only whole hours between 0 and 23
 			timetable.addLocations(['Ruang 101', 'Ruang 102', 'Ruang 103', 'Ruang 104','Ruang 105A','Ruang 105B','Ruang 106','Ruang 108','Aula','Studio Musik']);
-			timetable.addEvent('APSI-D', 'Ruang 101', new Date(2015,7,17,10,45), new Date(2015,7,17,12,30));
+			for (var i = 0; i < stringLength; i++) {
+    			var purpose = scheduleString[i][7];
+    			var room_id = scheduleString[i][2];
+    			var date_begin = scheduleString[i][3].split("-");
+    			var year_b = date_begin[0];
+    			var month_b = date_begin[1];
+    			var date_b = date_begin[2];
+    			var date_finish = scheduleString[i][5].split("-");
+    			var year_f = date_finish[0];
+    			var month_f = date_finish[1];
+    			var date_f = date_finish[2];
+    			var time_begin = scheduleString[i][4].split(":");
+    			var hour_b = time_begin[0];
+    			var minutes_b = time_begin[1];
+    			var time_finish = scheduleString[i][6].split(":");
+    			var hour_f = time_finish[0];
+    			var minutes_f = time_finish[1];
+    			timetable.addEvent(purpose, locations[room_id], new Date(year_b,month_b,date_b,hour_b,minutes_b), new Date(year_f,month_f,date_f,hour_f,minutes_f));
+			}
 			var renderer = new Timetable.Renderer(timetable);
 			renderer.draw('.timetable'); // any css selector
 		});
