@@ -20,6 +20,9 @@ route::post('reservasi','ReservationController@ReservationInput');
 
 Route::post('login', 'AdminController@login');
 
+route::get('form','UserFormController@index');
+route::post('form','UserFormController@store');
+
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('admin/jadwal', 'AdminController@index');
 	Route::get('admin/reservasi', 'AdminController@index');
