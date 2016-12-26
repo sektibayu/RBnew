@@ -18,12 +18,13 @@ Route::get('/', function () {
 Route::get('reservasi','ReservationController@DisplayPendingRequest');
 route::post('reservasi','ReservationController@ReservationInput');
 
-Route::post('masuk', array(
+Route::post('login', array(
 		'before' => 'csrf', 
 		'uses' => 'AdminController@login', 
 		'as' => 'login'
 ));
-	
+
+Route::group(['middleware' => ['auth']], function () {
 	Route::get('admin/jadwal', 'AdminController@index');
 	Route::get('admin/reservasi', 'AdminController@index');
 	Route::get('admin', function () {
@@ -31,9 +32,4 @@ Route::post('masuk', array(
 	});
 	Route::get('admin/user', 'UserController@index');
 	Route::get('admin/logout','AdminController@logout');
-
-Route::group(['middleware' => ['auth']], function () {
-	
-	
-
 });

@@ -1,19 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function login(Request $request){
-     //    // dd($request->all());
-    	// if(Auth::attempt(['NRP_NIP' => $request->input('username'), 'password' => $request->input('password')])){
-     //        // dd("masuk");
-    	// 	return redirect('admin');
-    	// }
-     //    // dd("tidak masuk");
-    	// return view('pages.index');
+        if($request->input('username') == 'admin' && $request->input('password') == 'admin'){
+            Auth::loginUsingId('1000');
+            // dd(Auth::check());
+            return redirect('/admin');
+        }
+        return redirect('/');
     }
 
     public function logout(){
@@ -22,6 +21,6 @@ class AdminController extends Controller
     }
 
     public function index(){
-        return view('pages.admin');
+        return view('pages.admin.index');
     }
 }
