@@ -130,12 +130,6 @@
 									<label for="purpose">Tujuan Peminjaman</label>
 									<input type="text" name="purpose" class="form-control">
 								</div>
-								<div class="alert alert-success js-alert hidden" role="alert">
-        							Proses reservasi berhasil!
-  								</div>
-  								<div class="alert alert-danger js-alert hidden" role="alert">
-        							User tidak terdaftar!
-  								</div>
 								{{csrf_field()}}
 								<button type="submit" class="btn btn-primary">Pesan</button>
 								<button type="reset" class="btn btn-default">Reset</button>

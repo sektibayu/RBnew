@@ -16,24 +16,27 @@
 		<div class="row">
 			<div class="col-lg-10">
 				<div class="panel panel-default">
-					<div class="panel-heading">Form Elements</div>
+					<div class="panel-heading text-center">Tambah User</div>
 					<div class="panel-body">
-						<form role="form">
+						<form role="form" method="post" action="{{URL::to('form')}}">
 							
 							<div class="form-group">
 								<label>Nama</label>
-								<input class="form-control">
+								<input type="text" name="name" class="form-control">
 							</div>
 							<div class="form-group">
 								<label>NRP/NIP</label>
-								<input class="form-control">
+								<input type="text" name="nrp_nip" class="form-control">
 							</div>
-							<div class="form-group">
-								<label>No. Handphone</label>
-								<input class="form-control">
-							</div>
-																	
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<div class="alert alert-success js-alert hidden" role="alert">
+        						Penambahan user berhasil!
+  							</div>
+  							<div class="alert alert-danger js-alert hidden" role="alert">
+        						User sudah terdaftar!
+  							</div>
+							
+							{{csrf_field()}}										
+							<button type="submit" class="btn btn-primary">Simpan</button>
 							<button type="reset" class="btn btn-default">Reset</button>
 						</form>
 					</div>
@@ -42,4 +45,34 @@
 		</div><!-- /.row -->
 		
 	</div><!--/.main-->
+	@endsection
+
+	@section('js-extend')
+	<script type="text/javascript">
+		$('form').on('submit', function( event ) {
+	  	var $form = $( this );
+
+	  	event.preventDefault();
+	  	$('.js-alert').addClass('hidden');
+	  	$('.js-btn').button('loading');
+
+	  	$.ajax({
+	    	url: 'form',
+	    	type: 'POST',
+	    	data: $form.serialize(),
+	    	success: function(response){
+	    		if(response==1)
+	    		{
+	    			$('.alert-danger').removeClass('hidden');
+	        		$('.js-btn').button('reset');	
+	    		}
+	    		else
+	    		{
+	    			$('.alert-success').removeClass('hidden');
+	        		$('.js-btn').button('reset');
+	    		}
+	    	}
+	  	});
+	});
+	</script>
 	@endsection

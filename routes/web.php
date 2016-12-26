@@ -18,6 +18,9 @@ Route::get('/', function () {
 Route::get('reservasi','ReservationController@DisplayPendingRequest');
 route::post('reservasi','ReservationController@ReservationInput');
 
+route::get('form','UserFormController@index');
+route::post('form','UserFormController@store');
+
 Route::post('login', array(
 		'before' => 'csrf', 
 		'uses' => 'AdminController@login', 
